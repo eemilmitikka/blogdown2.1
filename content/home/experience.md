@@ -74,7 +74,7 @@ experience:
         Intern at the Russian and Eastern European Master's School (ExpREES). Responsibilities included:
         
         * Study administration and practical functions of the Russian and Eastern European Master's School (ExpREES)
-        * Organizing Orilampi Summer School for undergraduate ExpREES students
+        * Organizing work of the Orilampi Summer School for undergraduate ExpREES students
     
   - title: Intern
     company: Finland-Russia Society
