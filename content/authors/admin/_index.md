@@ -17,7 +17,7 @@ interests:
 organizations:
 - name: University of Helsinki
   url: https://www.helsinki.fi/en
-role: Ph.D. Candidate
+role: PhD Candidate in Russian & Eurasian Studies
 social:
 - icon: envelope
   icon_pack: fas
@@ -41,6 +41,6 @@ superuser: true
 title: Eemil Mitikka
 ---
 
-I'm a quantitatively oriented Ph.D. Candidate and social scientist from Helsinki. Currently, I work as a doctoral researcher at the University of Helsinki [(Doctoral Programme in Political, Societal and Regional Change)](https://www.helsinki.fi/en/admissions-and-education/apply-doctoral-programmes/doctoral-schools-and-doctoral-programmes/doctoral-school-humanities-and-social-sciences/doctoral-programme-political-societal-and-regional-change). My Ph.D. research deals with how political participation relates to authoritarianism in Russia and post-Soviet area.
+I'm a PhD candidate studying Russia and post-Soviet countries. I received my Bachelor of Social Science and my Master of Social Science in social and public policy from University of Helsinki. Additionally, I have received Expertise in Russian and Eastern European Studies [(ExpREES)](https://www2.helsinki.fi/en/aleksanteri-institute/education/master-level/exprees) from Aleksanteri Institute/University of Helsinki. Currently, I work as a doctoral researcher at the University of Helsinki/[Aleksanteri Institute](https://www2.helsinki.fi/en/aleksanteri-institute). My PhD research deals with how political participation relates to authoritarianism in Russia and more generally in post-Soviet area. Besides my background in social sciences and humanities, I am a quantitatively oriented researcher and an enthusiastic R user. I am also interested in promoting reproducible research.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
