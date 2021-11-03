@@ -9,7 +9,7 @@ education:
     institution: University of Helsinki
     year: 2019
   - course: Expertise in Russian and Eastern European Studies
-    institution: Univerity of Helsinki/Aleksanteri Institute
+    institution: University of Helsinki/Aleksanteri Institute
     year: 2019
   - course: Bachelor of Social Science (Social & Public Policy)
     institution: University of Helsinki
