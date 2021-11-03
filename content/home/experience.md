@@ -22,7 +22,7 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
-  - title: Ph.D. Candidate
+  - title: PhD Candidate
     company: University of Helsinki
     company_url: 'https://www.helsinki.fi/en'
     company_logo: HY
@@ -44,7 +44,33 @@ experience:
     date_start: '2020-03-01'
     date_end: '2020-12-31'
     description: Research assistant of Dr. Tuomas Forsberg
-
+  
+  - title: Research Assistant
+    company: University of Helsinki/Aleksanteri Institute
+    company_url: https://www2.helsinki.fi/en/aleksanteri-institute
+    company_logo: HY
+    location: Helsinki
+    date_start: '2018-05-01'
+    date_end: '2019-05-30'
+    description: Research Assistant of Dr. Katri Pynnöniemi
+  
+  - title: Intern
+    company: University of Helsinki/Aleksanteri Institute
+    company_url: https://www2.helsinki.fi/en/aleksanteri-institute/education/master-level/exprees
+    company_logo: HY
+    location: Helsinki
+    date_start: '2018-08-01'
+    date_end: '2019-11-30'
+    description: Intern at the Russian and Eastern European Master's School (ExpREES)
+    
+  - title: Intern
+    company: Finland-Russia Society
+    company_url: https://suomivenajaseura.fi/
+    company_logo: svs_logo
+    date_start: '2017-03-01'
+    date_end: '2017-05-31'
+    description: Intern at Finland-Russia Society
+    
 design:
   columns: '2'
 ---

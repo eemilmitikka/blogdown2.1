@@ -2,9 +2,18 @@
 bio:
 education:
   courses:
-  - course: PhD in Philosophy, Arts and Society
+  - course: Doctor of Philosophy (Russian & Eurasian studies)
     institution: University of Helsinki
-    year: 2024
+    year: 2021 (current position)
+  - course: Master of Social Science (Social & Public Policy)
+    institution: University of Helsinki
+    year: 2019
+  - course: Expertise in Russian and Eastern European Studies
+    institution: Univerity of Helsinki/Aleksanteri Institute
+    year: 2019
+  - course: Bachelor of Social Science (Social & Public Policy)
+    institution: University of Helsinki
+    year: 2015
 
 email: ""
 highlight_name: false
@@ -41,6 +50,6 @@ superuser: true
 title: Eemil Mitikka
 ---
 
-I'm a PhD candidate studying Russia and post-Soviet countries. I received my Bachelor of Social Science and my Master of Social Science in social and public policy from University of Helsinki. Additionally, I have received Expertise in Russian and Eastern European Studies [(ExpREES)](https://www2.helsinki.fi/en/aleksanteri-institute/education/master-level/exprees) from Aleksanteri Institute/University of Helsinki. Currently, I work as a doctoral researcher at the University of Helsinki/[Aleksanteri Institute](https://www2.helsinki.fi/en/aleksanteri-institute). My PhD research deals with how political participation relates to authoritarianism in Russia and more generally in post-Soviet area. Besides my background in social sciences and humanities, I am a quantitatively oriented researcher and an enthusiastic R user. I am also interested in promoting reproducible research.
+I am a PhD candidate specializing in Russia and post-Soviet countries. I received my Bachelor of Social Science and my Master of Social Science in social and public policy from University of Helsinki. Additionally, I have received Expertise in Russian and Eastern European Studies [(ExpREES)](https://www2.helsinki.fi/en/aleksanteri-institute/education/master-level/exprees) from Aleksanteri Institute/University of Helsinki. Currently, I work as a doctoral researcher at the University of Helsinki/[Aleksanteri Institute](https://www2.helsinki.fi/en/aleksanteri-institute). My PhD research deals with how political participation relates to authoritarianism in Russia and more generally in post-Soviet area. Besides my background in social sciences and humanities, I am a quantitatively oriented researcher and an enthusiastic R user. I am also interested in promoting reproducible research.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
