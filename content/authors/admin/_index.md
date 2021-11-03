@@ -19,8 +19,10 @@ email: ""
 highlight_name: false
 interests:
 - Political participation
+- Authoritarianism
 - Quantitative and computational research methods
-- Political science and comparative politics
+- Political science
+- Comparative politics
 - Data analysis
 - Russian and Eurasian studies
 organizations:
