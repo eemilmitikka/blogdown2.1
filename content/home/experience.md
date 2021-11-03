@@ -46,7 +46,7 @@ experience:
     description: |2-
         Research assistant of Dr. Tuomas Forsberg. Responsibilities included:
         
-        * Text editing for [*Russia's Cultural Statecraft*](https://www.routledge.com/Russias-Cultural-Statecraft/Forsberg-Makinen/p/book/9780367694357) book (eds. Tuomas Forsberg and Sirke Mäkinen)
+        * Editorial assistance for [*Russia's Cultural Statecraft*](https://www.routledge.com/Russias-Cultural-Statecraft/Forsberg-Makinen/p/book/9780367694357) book (eds. Tuomas Forsberg and Sirke Mäkinen)
         * Research data searching
         * Research material searching
   
