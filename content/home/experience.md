@@ -43,7 +43,12 @@ experience:
     location: Tampere
     date_start: '2020-03-01'
     date_end: '2020-12-31'
-    description: Research assistant of Dr. Tuomas Forsberg
+    description: |2-
+        Research assistant of Dr. Tuomas Forsberg. Responsibilities included:
+        
+        * Text editing for [*Russia's Cultural Statecraft*](https://www.routledge.com/Russias-Cultural-Statecraft/Forsberg-Makinen/p/book/9780367694357) book (eds. Tuomas Forsberg and Sirke Mäkinen)
+        * Research data searching
+        * Research material searching
   
   - title: Research Assistant
     company: University of Helsinki/Aleksanteri Institute
@@ -52,7 +57,11 @@ experience:
     location: Helsinki
     date_start: '2018-05-01'
     date_end: '2019-05-30'
-    description: Research Assistant of Dr. Katri Pynnöniemi
+    description: |2-
+        Research Assistant of Dr. Katri Pynnöniemi. Responsibilities included:
+        
+        * Research material and data searching for Dr. Pynnöniemi's projects
+        * Article authoring and editorial assistance for [*Nexus of Patriotism and Militarism in Russia*](https://hup.fi/site/books/e/10.33134/HUP-9/) volume (ed. Katri Pynnöniemi) 
   
   - title: Intern
     company: University of Helsinki/Aleksanteri Institute
@@ -61,7 +70,11 @@ experience:
     location: Helsinki
     date_start: '2018-08-01'
     date_end: '2019-11-30'
-    description: Intern at the Russian and Eastern European Master's School (ExpREES)
+    description: |2- 
+        Intern at the Russian and Eastern European Master's School (ExpREES). Responsibilities included:
+        
+        * Study administration and practical functions of the Russian and Eastern European Master's School (ExpREES)
+        * Organizing Orilampi Summer School for undergraduate ExpREES students
     
   - title: Intern
     company: Finland-Russia Society
@@ -69,7 +82,11 @@ experience:
     company_logo: svs_logo
     date_start: '2017-03-01'
     date_end: '2017-05-31'
-    description: Intern at Finland-Russia Society
+    description: |2-
+        Intern at the Finland-Russia Society. Responsibilities included:
+        
+        * Organizing work of the annual [Finnish-Russian Cultural Forum (Suomalais-venäläinen kulttuurifoorumi)](https://suomivenajaseura.fi/kulttuuritoiminta/kulttuurifoorumi/)
+        * Translating cultural forum related texts from Russian to Finnish and from Finnish to Russian
     
 design:
   columns: '2'
