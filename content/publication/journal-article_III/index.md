@@ -1,5 +1,5 @@
 ---
-abstract: Social surveys have been an important part of social sciences ever since George Gallup successfully predicted the re-election of Franklin D. Roosevelt. They aim to represent the opinions of a population, so that politicians, scholars and ordinary citizens could get a grasp of what is going on in society. With the development of statistical methods and the survey industry, the demand for social surveys has grown substantially. However, whereas surveys are thought to represent public sentiment somewhat accurately in a democratic context, there are more doubts about their reliability in undemocratic set-ups. Some critics maintain that surveys on non-democratic societies are unreliable and biased, because undemocratic political atmosphere is believed to distort opinion climate. As a researcher who studies Russia and uses survey data, I face the claim about biased and unreliable Russian surveys regularly, both in everyday and professional discussions. [text continues in the article...]
+abstract: Tämä selvitys on toteutettu puolustusministeriön, sisäministeriön ja ulkoministeriön toimeksiannosta ja sen tarkoituksena on tuottaa tietopohjaa Venäjä ja turvallisuus -tutkimusyhteistyön kehittämiseksi tutkimus- ja asiantuntijatahojen ja viranomaisten välillä. Suomessa  on  runsaasti  laadukasta  Venäjä-tutkimusta,  mutta  ulko-,  turvallisuus- ja puolustuspolitiikkaan sekä kokonaisturvallisuuden teemoihin liittyen selvästi vähemmän. Akateemisen tutkimuksen lisäksi Suomessa on osaamista ja tutkimus- ja selvitystoimintaa sekä asiantuntijatyöskentelyä, jossa olisi hyödyllistä tehdä tiiviimpää yhteistyötä viranomaisten ja tutkimuskentän välillä. Selvitys toimii jatkumona vuonna 2016 laaditulle VN TEAS -selvitykselle Venäjän turvallisuuspolitiikan tutkimuksesta Suomessa. Lisäksi selvitys on jatkoa puolustusministeriön, sisäministeriön ja ulkoministeriön vuonna 2017 tilaamalle ja professori Kari Liuhdon toteuttamalle selvitykselle viranomaisten tieto- ja yhteistyötarpeista. Selvityksen yhtenä jatkotoimenpiteenä ehdotettiin alan tutkimustarjonnan tarkempaa selvittämistä, mihin tässä selvityksessä keskitytään.
 author_notes:
 - Equal contribution
 - Equal contribution
@@ -13,17 +13,17 @@ image:
   focal_point: ""
   preview_only: false
 projects: []
-publication: '*Baltic Rim Economies*, [Expert article 2668](https://sites.utu.fi/bre/should-we-trust-russian-surveys/)'
+publication: 'Helsinki: Puolustusministeriön julkaisut'
 publication_short: ""
 publication_types:
-- "2"
-publishDate: "2020-02-28T00:00:00Z"
+- "4"
+publishDate: "2020-01-01T00:00:00Z"
 # slides: example
 summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus
   ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum.
 tags:
  - Source Themes
-title: Should we trust Russian surveys?
+title: Venäjä ja turvallisuus - Tutkimus- ja asiantuntijatarjonta Suomessa [Russia and security - research and expert supply in Finland]
 url_code: ""
 # url_dataset: "https://www.worldvaluessurvey.org/WVSDocumentationWV7.jsp"
 # url_pdf: http://arxiv.org/pdf/1512.04133v1
