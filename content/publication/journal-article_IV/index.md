@@ -4,6 +4,12 @@ abstract: This section describes the internal outlook in Russia, which is import
 author_notes:
 - Equal contribution
 - Equal contribution
+- Equal contribution
+- Equal contribution
+- Equal contribution
+- Equal contribution
+- Equal contribution
+- Equal contribution
 authors:
 - admin
 - Salla Nazarenko
@@ -17,7 +23,7 @@ authors:
 doi: ""
 featured: false
 image:
-  # caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/jdD8gXaTZsc)'
+  caption: ''
   focal_point: ""
   preview_only: false
 projects: []
@@ -26,19 +32,18 @@ publication_short: ""
 publication_types:
 - "4"
 publishDate: "2019-07-01T00:00:00Z"
-# slides: example
-summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus
-  ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum.
+slides:
+summary:
 tags:
- - Source Themes
+  - Source Themes
 title: Russia's internal development
 url_code: ""
-# url_dataset: "https://www.worldvaluessurvey.org/WVSDocumentationWV7.jsp"
-# url_pdf: http://arxiv.org/pdf/1512.04133v1
-# url_poster: ""
-# url_project: ""
-# url_slides: ""
-# url_source: ""
-# url_video: ""
+url_dataset: ""
+url_pdf: ""
+url_poster: ""
+url_project: ""
+url_slides: ""
+url_source: ""
+url_video: ""
 ---
 
