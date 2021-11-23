@@ -1,0 +1,235 @@
+---
+date: "2016-04-27T00:00:00Z"
+external_link: ""
+image:
+  caption: Photo by rawpixel on Unsplash
+  focal_point: Smart
+links:
+- icon: twitter
+  icon_pack: fab
+  name: Follow
+  url: https://twitter.com/georgecushen
+slides: example
+summary: An example of using the in-built project page.
+tags:
+- Deep Learning
+title: Internal Project
+url_code: ""
+url_pdf: ""
+url_slides: ""
+url_video: ""
+bibliography: references.bib
+---
+
+In this blog post, I will show how to create a structural equation model (henceforth: SEM) plot from the scratch using **semPlot** package's `semPlotModel()` function. Drawing SEM models with this function might be obvious to some of you, but I discovered this function myself only recently from Boris Sokolov's [*The Index of Emancipative Values: Measurement Model Misspecifications*](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/index-of-emancipative-values-measurement-model-misspecifications/5786A8463FCE705D22E54082DFFB209E#article) (see short description of Emancipative Values index in the end of this post)[^1] article's [replication code](https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/TPGPCR/TSVAA3&version=1.1), and thought that sharing this information might be useful to others.
+
+[^1]: In his article, Sokolov criticizes the use of [Emancipative Values Index](https://www.worldvaluessurvey.org/WVSContents.jsp?CMSID=welzelidx&CMSID=welzelidx) (henceforth: EVI) developed by [Christian Welzel](https://en.wikipedia.org/wiki/Christian_Welzel). EVI is a refined version of [Ronald Inglehart's](https://en.wikipedia.org/wiki/Ronald_Inglehart) concepts of postmaterialist values and self-expression values and used as a key explanatory variable in many important contributions to political science. In a very tiny nutshell, EVI is hypothesized to be associated with an increase in support for democracy, tolarance of minorities and other out-groups and gender equality. Emancipative value orientations have also been shown to foster interpersonal trust, reduce domestic and internatinal violence, and contribute to democratization and secularization globally.
+
+Here is how Sokolov [-@sokolov2018] created the path model describing Emancipative Values Index (NB: code is directly copied from Sokolov's [replication code](https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/TPGPCR/TSVAA3&version=1.1), only `tiff()` function is commented out in here):
+
+
+
+```{r message=FALSE}
+library(semPlot)
+# define a CFA measurement model for the EVI
+EVI <- 'Autonomy  =~ Independence + Imagination + Obedience 
+              Equality =~ Jobs + Leaders + Education
+              Choice  =~ Homosexuality + Abortion + Divorce 
+              Voice =~ Speech + Say_nat + Say_local 
+              EVI =~ Autonomy + Equality + Choice + Voice'
+
+# plot the measurement model
+
+# tiff('Figure 1.tiff', units = "cm", width = 15.5, height = 9, res = 1000)
+
+semPaths(semPlotModel(EVI), curvePivot = TRUE,
+residuals = FALSE,
+nodeLabels= c("Inde-\npendence", "Imagi-\nnation", "Obedience", # set node labels
+"Jobs", "Leaders", "Education",
+"Homo-\nsexuality", "Abortion", "Divorce",
+"Freedom \nof speech", "More Say:\n National", "More Say:\n Local", 
+"Autonomy", "Equality", "Choice", "Voice", "Index of\nEmancipative\nValues" ),
+optimizeLatRes = TRUE,
+sizeMan = 9,
+sizeMan2 = 5,
+sizeLat = 12,
+mar = c(5,1,7,1),
+label.cex= 0.6, 
+label.scale= FALSE, # label size is not matched to the size of node
+edge.width= 1.5,  
+edge.color= "black")  # color of edge lines
+
+```
+
+So, the only input needed to create a SEM plot from scratch is the hypothesized measurement model, which is here the **EVI** object. Then you just pass this measurement model as an argument to `semPlotModel()` function and define rest of the attributes within the `semPaths()` function call. Note that since the wording of your own model's latent variables (text within the circles, here: "Index of Emancipative Values", "Autonomy", "Equality", "Choice" and "Voice") and manifest variables (here: "Indepence", "Imagination", "Obedience", "Jobs", "Leaders", "Education", "Homosexuality", "Abortion", "Divorce", "Freedom of speech", "More Say: National" and "More Say: Local") differs probably from the wording of the EVI model described above, you probably have to adjust the size of your latent and manifest variables, resize the label, etc. You may just type `?semPaths` in your RMarkdown document's code chunk section to see the details of the `semPaths()` function's arguments:
+
+```{r message=FALSE}
+?semPaths
+```
+
+## Own SEM model from scratch and further modifications of the plot
+
+To further illustrate the possibilities for creating your own SEM model from scratch, let us next create a SEM model of political participation described by Marc Hooghe and Sofie Marien [-@hooghe2013]. In their article (ibid.), Hooghe and Marien define political participation as a three-dimensional phenomenon, which consists of:
+
+1.  Insitutionalized participation
+2.  Non-institutionalized participation
+3.  Voting
+
+Let us first define the hypothesized model. In the code chunk below, I have named this hypothesized model as `participation_hooghe_marien`, but you may give it almost any name you want.[^2] In the code below, I have also used **`"tree3"`** layout and **`rotation = 2`** options to give a bit more air between the latent variables and to draw the plot horizontally instead of vertical presentation. I also changed the edge color to gray draw the lines between the variables in grey color instead of black just to illustrate some modification possibilities.
+
+[^2]: The [list of keywords you cannot use](https://www.dummies.com/programming/r/how-to-successfully-follow-naming-conventions-in-r/) includes the following:
+
+    -   break
+
+    -   else
+
+    -   FALSE
+
+    -   for
+
+    -   function
+
+    -   if
+
+    -   Inf
+
+    -   NA
+
+    -   NaN
+
+    -   next
+
+    -   repeat
+
+    -   return
+
+    -   TRUE
+
+    -   while
+
+        -   **Names must start with a letter or a dot.** If you start a name with a dot, the second character can't be a digit.
+        -   **Names should contain only letters, numbers, underscore characters, and dots.** Although you can force R to accept other characters in names, you shouldn't, because these characters often have a special meaning in R.
+
+    Other than that, R is quite liberal when it comes to names for objects and functions.
+
+```{r message=FALSE}
+library(semPlot)
+# Define your hypothesized model
+participation_hooghe_marien <- 'Institutionalized  =~ Contacting + Party + Organization 
+              Noninstitutionalized =~ Demonstrating + Boycotting + Petitioning
+              Voting  =~ National 
+              Participation =~ Institutionalized + Noninstitutionalized + Voting'
+
+# Draw SEM path model
+semPaths(semPlotModel(participation_hooghe_marien),
+         rotation = 2, # this gives horizontal presentation of the plot
+         layout = "tree3",
+         curvePivot = TRUE,
+         residuals = FALSE,
+         nodeLabels = c("Contacting", "Party work", "Organization\nwork",
+                        "Demon-\nstrating", "Boycotting", "Petitioning",
+                        "Voting in\nelections",
+                        "Institutionalized", "Non-\ninstitutionalized", "Voting",
+                        "Political\nparticipation"),
+         legend.cex = 0.4,
+         optimizeLatRes = TRUE,
+         sizeMan = 13, # width of the manifest nodes/variables
+         sizeMan2 = 6, # height of the manifest nodes/variables
+         sizeLat = 17, # width of the latent nodes/variables
+         mar = c(1,4,1,4),
+         label.cex = 0.8,
+         label.scale = FALSE,
+         edge.width = 1.5,
+         edge.color = "grey")
+
+
+```
+
+Let us define one more model from scratch. This time I will give shorter node names within the manifest variables (i.e. variables within the rectangles) and add longer question wordings in the side of the plot. This might be useful if you have lot of manifest variables and you struggle with their shorter naming (as I often do).
+
+Since I am studying political participation, I will this time plot a model of political participation proposed by Bumsoo Kim and Jennifer Hoewe [-@kim2020]. Kim and Hoewe suggest in their article that political participation has six distinctive dimensions:
+
+1.  traditional political participation,
+2.  interpersonal political talk,
+3.  voting,
+4.  social media engagement, and
+5.  online information seeking.
+
+Let us plot this model with `semPlotModel()` fuction.
+
+```{r message=FALSE}
+library(semPlot)
+# Define your model
+participation_kim_hoewe <- "
+InfoSeeking =~ Q1 + Q2 + Q3 + Q4
+
+SocialMedia =~ Q5 + Q6 + Q7 + Q8 + Q9 + Q10
+
+Voting =~ Q11 + Q12
+
+PoliticalTalk =~ Q13 + Q14 + Q15 + Q16
+
+Traditional =~ Q17 + Q18 + Q19 + Q20 + Q21 + Q22 + Q23 + Q24 + Q25 + Q26
+
+Participation =~ InfoSeeking + SocialMedia + Voting + PoliticalTalk + Traditional
+"
+
+# Add the desired node names
+nodeNames_kim_hoewe <- c("Visited websites of the government and public administration",
+                         "Visited websites of any political parties or organizations",
+                         "Visited the websites of the municipality",
+                         "Visited a campaign website",
+                         "Shared your opinion on a social/political topic on social media",
+                         "Expressed political opinions in online public spaces",
+                         "Shared political information posted on social media",
+                         "Posted political messages online",
+                         "Participated in online political discussion",
+                         "Clicked on like for political information posted on social media",
+                         "Voted in general elections",
+                         "Voted in local elections",
+                         "Discussed politics with your family",
+                         "Talked about public problems",
+                         "Discussed politics with your friends",
+                         "Discussed politics with other people",
+                         "Run for public office",
+                         "Written a letter to the editor of a newspaper or magazine",
+                         "Worked on any political campaign",
+                         "Organized an internet-based boycott",
+                         "Subscribed to a political listserv",
+                         "Signed up to volunteer for a campaign/issue",
+                         "Called other people to raise funds for a political organization\nor purpose",
+                         "Participated in a nonviolent mass demonstration",
+                         "Donated money to a political/social organization",
+                         "Given money to a political party",
+                         "Online information seeking",
+                         "Social media engagement",
+                         "Voting in different level elections",
+                         "Interpersonal political talk",
+                         "Traditional political participation",
+                         "Political participation")
+
+# Plot the model
+semPaths(semPlotModel(participation_kim_hoewe),
+         residuals = FALSE,
+         layout = "tree3",
+         rotation = 2,
+         nCharNodes = 0,
+         manifests = paste0("Q", 1:26),
+         nodeNames = nodeNames_kim_hoewe,
+         label.cex = 0.6,
+         legend.cex = 0.2,
+         label.scale = FALSE,
+         mar = c(1,4,1,4,1,4),
+         sizeLat = 17,
+         sizeLat2 = 9,
+         sizeMan2 = 2,
+         sizeMan = 4,
+         edge.color = "black")
+
+```
+
+In his article, Sokolov criticizes the use of [Emancipative Values Index](https://www.worldvaluessurvey.org/WVSContents.jsp?CMSID=welzelidx&CMSID=welzelidx) (henceforth: EVI) developed by [Christian Welzel](https://en.wikipedia.org/wiki/Christian_Welzel). EVI is a refined version of [Ronald Inglehart's](https://en.wikipedia.org/wiki/Ronald_Inglehart) concepts of postmaterialist values and self-expression values and used as a key explanatory variable in many important contributions to political science. In a very tiny nutshell, EVI is hypothesized to be associated with an increase in support for democracy, tolarance of minorities and other out-groups and gender equality. Emancipative value orientations have also been shown to foster interpersonal trust, reduce domestic and internatinal violence, and contribute to democratization and secularization globally.
+
+bbakbka
+
+\[1: In his article, Sokolov criticizes the use of [Emancipative Values Index](https://www.worldvaluessurvey.org/WVSContents.jsp?CMSID=welzelidx&CMSID=welzelidx) (EVI) developed by [Christian Welzel](https://en.wikipedia.org/wiki/Christian_Welzel). EVI is a refined version of [Ronald Inglehart's](https://en.wikipedia.org/wiki/Ronald_Inglehart) concepts of postmaterialist values and self-expression values and used as a key explanatory variable in many important contributions to political science. In a very tiny nutshell, EVI is hypothesized to be associated with an increase in support for democracy, tolerance of minorities and other out-groups and gender equality. Emancipative value orientations have also been shown to foster interpersonal trust, reduce domestic and internatinal violence, and contribute to democratization and secularization globally.\]
