@@ -22,11 +22,11 @@ bibliography: references.bib
 csl: "american-political-science-association.csl"
 ---
 
-In this blog post, I will show how to create a structural equation model (henceforth: SEM) plot from the scratch using **semPlot** package's `semPlotModel()` function. Drawing SEM models with this function might be obvious to some of you, but I discovered this function myself only recently from Boris Sokolov's [*The Index of Emancipative Values: Measurement Model Misspecifications*](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/index-of-emancipative-values-measurement-model-misspecifications/5786A8463FCE705D22E54082DFFB209E#article) (see short description of Emancipative Values index in the end of this post)[^1] article's replication code, and thought that this information might be useful for other people too.
+In this blog post, I will show how to create a structural equation model (henceforth: SEM) plot from the scratch using **semPlot** package's `semPlotModel()` function. Drawing SEM models with this function might be obvious to some of you, but I discovered this function myself only recently from Boris Sokolov's *The Index of Emancipative Values: Measurement Model Misspecifications* [-@sokolov2018][^1] article's replication code, and thought that this information might be useful for other people too.
 
 [^1]: In his article, Sokolov criticizes the use of [Emancipative Values Index](https://www.worldvaluessurvey.org/WVSContents.jsp?CMSID=welzelidx&CMSID=welzelidx) (henceforth: EVI) developed by [Christian Welzel](https://en.wikipedia.org/wiki/Christian_Welzel). Sokolov argues e.g. that EVI is culturally non-invariant measure, or, in lesser statistical jargon, one cannot apply EVI cross-culturally -- besides some Western cultural zones. EVI itself is a refined version of [Ronald Inglehart's](https://en.wikipedia.org/wiki/Ronald_Inglehart) concepts of post-materialist and self-expression values and it is used as a key explanatory variable in many important contributions to political science. In a very tiny nutshell, EVI is hypothesized to be associated with an increase in support for democracy, tolarance of minorities and other out-groups and gender equality. Emancipative value orientations have also been shown to foster interpersonal trust, reduce domestic and international violence, and contribute to democratization and secularization globally [for details, see @sokolov2018].
 
-Here is how Sokolov [-@sokolov2018] created the path model describing Emancipative Values Index (NB: code is directly copied from Sokolov's [replication code](https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/TPGPCR/TSVAA3&version=1.1), only `tiff()` function is commented out in here):
+Here is how Sokolov [-@sokolov2018] created the path model describing Emancipative Values Index (NB: code is directly copied his [replication code](https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/TPGPCR/TSVAA3&version=1.1), only `tiff()` function is commented out in here):
 
 ```{r message=FALSE}
 library(semPlot)
@@ -237,7 +237,7 @@ To conclude, here are some general notes and tips for drawing SEM plots with the
 
 -   Play around with different layout options! Besides of `"tree"` option, there are `"circle"` and `"spring"` options, and the best choice for your visualization depends e.g. on the number of factors/latent variables and manifest/observed variables. For example, I have found `"spring"` layout useful in some situations, especially if you have many factors and observed variables in your model.
 
--   Be patient: you probably have to play around and adjust with `semPaths()` -- especially with `sizeMan`, `sizeMan2`, `sizeLat`, `sizeLat2`, `label.cex`, `legend.cex` and `nodeNames` arguments -- to find the best solution for your model plotting.
+-   Be patient: you probably have to play around with `semPaths()` to find the best solution for your model plotting, especially with the `sizeMan`, `sizeMan2`, `sizeLat`, `sizeLat2`, `label.cex`, `legend.cex` and `nodeNames` arguments.
 
 -   Check out Sacha Epskamp's [-@epskamp2019] tutorial video to get started -- he is the author of the **semPlot** package, and his introductional video offers a good starting point for SEM plotting.
 
