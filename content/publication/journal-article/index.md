@@ -22,8 +22,8 @@ publishDate: "2021-05-27T00:00:00Z"
 # slides: example
 summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus
   ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum.
-tags:
- - Source Themes
+# tags:
+#  - Source Themes
 title: A Growing Militarism? Changing Meanings of Russian Patriotism in 2011–2017
 url_code: ""
 url_dataset: "https://www.worldvaluessurvey.org/WVSDocumentationWV7.jsp"
