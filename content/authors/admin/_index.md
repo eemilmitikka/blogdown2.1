@@ -39,6 +39,10 @@ social:
   icon_pack: fab
   label: Follow me on Twitter
   link: https://twitter.com/eemilmitikka
+- icon: youtube
+  icon_pack: fab
+  label: My YouTube channel
+  link: https://www.youtube.com/channel/UC6f_SpVTiB7rZS0Knwb6aYg/featured
 #- icon: graduation-cap
 #  icon_pack: fas
 #  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
