@@ -1,246 +1,31 @@
 ---
-date: "2021-11-24T00:00:00Z"
+date: "2022-01-18T00:00:00Z"
 external_link: ""
 # image:
 #   caption: Photo by rawpixel on Unsplash
 #   focal_point: Smart
-# links:
-# - icon: twitter
-#   icon_pack: fab
-#   name: Follow
-#   url: https://twitter.com/georgecushen
-# slides: example
-summary: Structural Equation Models from scratch using semPlot package.
+links:
+  - icon: link
+    icon_pack: fa
+    name: Presentation Slides
+    url: https://zoterotutorials.netlify.app/zotero_tutorials_slides.html?fbclid=IwAR2FzkhPhB5_I6RdkuCyw21YcI9jrJkRGnbC-NAZWIvpAvDg6U1i_vWa0KE#1
+  - icon: youtube
+    icon_pack: fab
+    name: YouTube Videos
+    url: https://www.youtube.com/watch?v=REfQTIYxeMU&list=PL8dil_YRqri670TX9LOzb3NDwKSCuf8ro
+  - icon: github
+    icon_pack: fab
+    name: GitHub Materials
+    url: https://github.com/eemilmitikka/zotero-tutorials
+
+ # slides: example
+summary: Zotero instructions videos and presentation slides.
  # tags:
  #  - Structural Equation Models
-title: SEM models from scratch with the semPlot package
-url_code: ""
-url_pdf: ""
-url_slides: ""
-url_video: ""
-bibliography: references.bib
-csl: "american-political-science-association.csl"
+title: Zotero tutorials (xaringan presentation)
+# url_code: ""
+# url_pdf: ""
+# # url_slides: ""
+
 ---
 
-In this blog post, I will show how to create a structural equation model (henceforth: SEM) plot from the scratch using **semPlot** package's `semPlotModel()` function. Drawing SEM models with this function might be obvious to some of you, but I discovered this function myself only recently from Boris Sokolov's *The Index of Emancipative Values: Measurement Model Misspecifications* [-@sokolov2018][^1] article's replication code, and thought that this information might be useful for other people too.
-
-[^1]: In his article, Sokolov criticizes the use of [Emancipative Values Index](https://www.worldvaluessurvey.org/WVSContents.jsp?CMSID=welzelidx&CMSID=welzelidx) (henceforth: EVI) developed by [Christian Welzel](https://en.wikipedia.org/wiki/Christian_Welzel). Sokolov argues e.g. that EVI is culturally non-invariant measure, or, in lesser statistical jargon, one cannot apply EVI cross-culturally -- besides some Western cultural zones. EVI itself is a refined version of [Ronald Inglehart's](https://en.wikipedia.org/wiki/Ronald_Inglehart) concepts of post-materialist and self-expression values and it is used as a key explanatory variable in many important contributions to political science. In a very tiny nutshell, EVI is hypothesized to be associated with an increase in support for democracy, tolarance of minorities and other out-groups and gender equality. Emancipative value orientations have also been shown to foster interpersonal trust, reduce domestic and international violence, and contribute to democratization and secularization globally [for details, see @sokolov2018].
-
-Here is how Sokolov [-@sokolov2018] created the path model describing Emancipative Values Index (NB: code is directly copied his [replication code](https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/TPGPCR/TSVAA3&version=1.1), only `tiff()` function is commented out in here):
-
-```{r message=FALSE}
-library(semPlot)
-# define a CFA measurement model for the EVI
-EVI <- 'Autonomy  =~ Independence + Imagination + Obedience 
-              Equality =~ Jobs + Leaders + Education
-              Choice  =~ Homosexuality + Abortion + Divorce 
-              Voice =~ Speech + Say_nat + Say_local 
-              EVI =~ Autonomy + Equality + Choice + Voice'
-
-# plot the measurement model
-
-# tiff('Figure 1.tiff', units = "cm", width = 15.5, height = 9, res = 1000)
-
-semPaths(semPlotModel(EVI), curvePivot = TRUE,
-residuals = FALSE,
-nodeLabels= c("Inde-\npendence", "Imagi-\nnation", "Obedience", # set node labels
-"Jobs", "Leaders", "Education",
-"Homo-\nsexuality", "Abortion", "Divorce",
-"Freedom \nof speech", "More Say:\n National", "More Say:\n Local", 
-"Autonomy", "Equality", "Choice", "Voice", "Index of\nEmancipative\nValues" ),
-optimizeLatRes = TRUE,
-sizeMan = 9,
-sizeMan2 = 5,
-sizeLat = 12,
-mar = c(5,1,7,1),
-label.cex= 0.6, 
-label.scale= FALSE, # label size is not matched to the size of node
-edge.width= 1.5,  
-edge.color= "black")  # color of edge lines
-
-```
-
-So, the only input needed to create a SEM plot from scratch is the hypothesized measurement model, which is here the **EVI** object. Then you just pass this measurement model as an argument to `semPlotModel()` function and define rest of the attributes within the `semPaths()` function call. Note that since the wording of your own model's latent variables (text within the circles, here: "Index of Emancipative Values", "Autonomy", "Equality", "Choice" and "Voice") and manifest (or observed) variables (here: "Indepence", "Imagination", "Obedience", "Jobs", "Leaders", "Education", "Homosexuality", "Abortion", "Divorce", "Freedom of speech", "More Say: National" and "More Say: Local") differs probably from the wording of the EVI model described above, you probably have to adjust the size of your latent and manifest variables, resize the label, etc. You may just type `?semPaths` in your RMarkdown document's code chunk section to see the details of the `semPaths()` function's arguments:
-
-```{r message=FALSE}
-?semPaths
-```
-
-## Own SEM model from scratch and further modifications of the plot
-
-To further illustrate the possibilities for creating your own SEM model from scratch, let us next create a SEM model of political participation described by Marc Hooghe and Sofie Marien [-@hooghe2013]. In their article (ibid.), Hooghe and Marien define political participation as a three-dimensional phenomenon, which consists of:
-
-1.  Insitutionalized participation
-2.  Non-institutionalized participation
-3.  Voting
-
-First we need to define the hypothesized model. In the code chunk below, I have named this hypothesized model as `participation_hooghe_marien`, but you may give it (almost) any name you want.[^2] I have also used **`"tree3"`** layout and **`rotation = 2`** options. Layout **`"tree3"`** organizes the latent variables slightly differently and **`rotation = 2`** draws the plot horizontally instead of vertical presentation. I also changed the edge color to gray draw the lines between the variables in grey color instead of black just to illustrate some of the modification possibilities. You may also add title to your plot with `title()` function, as I have done in the plot below.
-
-[^2]: The [list of keywords you cannot use](https://www.dummies.com/programming/r/how-to-successfully-follow-naming-conventions-in-r/) includes the following:
-
-    -   break
-
-    -   else
-
-    -   FALSE
-
-    -   for
-
-    -   function
-
-    -   if
-
-    -   Inf
-
-    -   NA
-
-    -   NaN
-
-    -   next
-
-    -   repeat
-
-    -   return
-
-    -   TRUE
-
-    -   while
-
-        -   **Names must start with a letter or a dot.** If you start a name with a dot, the second character can't be a digit.
-        -   **Names should contain only letters, numbers, underscore characters, and dots.** Although you can force R to accept other characters in names, you shouldn't, because these characters often have a special meaning in R.
-
-    Other than that, R is quite liberal when it comes to names for objects and functions.
-
-```{r message=FALSE}
-library(semPlot)
-# Define your hypothesized model
-participation_hooghe_marien <- 'Institutionalized  =~ Contacting + Party + Organization 
-              Noninstitutionalized =~ Demonstrating + Boycotting + Petitioning
-              Voting  =~ National 
-              Participation =~ Institutionalized + Noninstitutionalized + Voting'
-
-# Draw SEM path model
-semPaths(semPlotModel(participation_hooghe_marien),
-         rotation = 2, # this gives horizontal presentation of the plot
-         layout = "tree3",
-         curvePivot = TRUE,
-         residuals = FALSE,
-         nodeLabels = c("Contacting", "Party work", "Organization\nwork",
-                        "Demon-\nstrating", "Boycotting", "Petitioning",
-                        "Voting in\nelections",
-                        "Institutionalized", "Non-\ninstitutionalized", "Voting",
-                        "Political\nparticipation"),
-         legend.cex = 0.4,
-         optimizeLatRes = TRUE,
-         sizeMan = 13, # width of the manifest nodes/variables
-         sizeMan2 = 6, # height of the manifest nodes/variables
-         sizeLat = 17, # width of the latent nodes/variables
-         mar = c(1,4,1,4),
-         label.cex = 0.8,
-         label.scale = FALSE,
-         edge.width = 1.5,
-         edge.color = "grey")
-title(main = "Three-dimensional participation model\n(Hooghe and Marien 2013)", 
-      line = 2, 
-      cex.main = 1,
-      adj = 0)
-```
-
-Let's define one more model from scratch by drawing inspiration and ideas from the author of the **semPlot** package, Sacha Epskamp [-@epskamp2019]. This time I will give shorter node names within the manifest variables (i.e. observed variables or variables within the rectangles) and add longer question wordings on the left side of the plot. This might be useful if you have lot of observed/manifest variables and you struggle with their shorter naming (as I often do).
-
-Since I am studying political participation, I will this time plot contemporary factors of political participation proposed by Bumsoo Kim and Jennifer Hoewe [-@kim2020]. Kim and Hoewe suggest in their research that modern political participation has six distinctive dimensions:
-
-1.  traditional political participation,
-2.  interpersonal political talk,
-3.  voting,
-4.  social media engagement,
-5.  online information seeking.
-
-Let's now plot this model using `semPlotModel()`. Note that this time I gave shorter names to observed/manifest variables ranging from Q1 to Q26, where "Q" represents "Question" and number refers simply to question number. I also added exact question wordings in a character vector named `nodeNames_kim_hoewe`. Finally, to plot the observed variables from Q1 to Q26 and to add the exact question wordings of these variables as a side legend, I set the `manifest` equals `paste0("Q", 1:26)` and `nodeNames` equals `nodeNames_kim_hoewe` within the `semPaths()` function call.
-
-The resulting SEM plot looks quite neat to me: it depicts the main phenomenon of interest (political participation), its five dimensions (traditional participation, interpersonal political talk, voting, social media engagement and online information seeking) and the observed variables with their question wordings all in one plot.
-
-```{r message=FALSE}
-library(semPlot)
-# Define your model
-participation_kim_hoewe <- "
-InfoSeeking =~ Q1 + Q2 + Q3 + Q4
-
-SocialMedia =~ Q5 + Q6 + Q7 + Q8 + Q9 + Q10
-
-Voting =~ Q11 + Q12
-
-PoliticalTalk =~ Q13 + Q14 + Q15 + Q16
-
-Traditional =~ Q17 + Q18 + Q19 + Q20 + Q21 + Q22 + Q23 + Q24 + Q25 + Q26
-
-Participation =~ InfoSeeking + SocialMedia + Voting + PoliticalTalk + Traditional
-"
-
-# Add the desired node names
-nodeNames_kim_hoewe <- c("Visited websites of the government\nand public administration",
-                         "Visited websites of any political\nparties or organizations",
-                         "Visited the websites of the\nmunicipality",
-                         "Visited a campaign website",
-                         "Shared your opinion on a social/political\ntopic on social media",
-                         "Expressed political opinions in online\npublic spaces",
-                         "Shared political information posted on\nsocial media",
-                         "Posted political messages online",
-                         "Participated in online political discussion",
-                         "Clicked on like for political information\nposted on social media",
-                         "Voted in general elections",
-                         "Voted in local elections",
-                         "Discussed politics with your family",
-                         "Talked about public problems",
-                         "Discussed politics with your friends",
-                         "Discussed politics with other people",
-                         "Run for public office",
-                         "Written a letter to the editor of a newspaper\nor magazine",
-                         "Worked on any political campaign",
-                         "Organized an internet-based boycott",
-                         "Subscribed to a political listserv",
-                         "Signed up to volunteer for a campaign/issue",
-                         "Called other people to raise funds for\na political organization\nor purpose",
-                         "Participated in a nonviolent mass\ndemonstration",
-                         "Donated money to a political/social\norganization",
-                         "Given money to a political party",
-                         "Online information seeking",
-                         "Social media engagement",
-                         "Voting in different level elections",
-                         "Interpersonal political talk",
-                         "Traditional political participation",
-                         "Political participation")
-
-# Plot the model
-semPaths(semPlotModel(participation_kim_hoewe),
-         residuals = FALSE,
-         layout = "tree3",
-         rotation = 2,
-         nCharNodes = 0,
-         manifests = paste0("Q", 1:26), # prints the observed variables ranging from Q1 to Q26
-         nodeNames = nodeNames_kim_hoewe, # add the exact question wordings as legend text
-         label.cex = 0.6,
-         legend.cex = 0.25,
-         label.scale = FALSE,
-         mar = c(1,4,1,4,1,4,1,4),
-         sizeLat = 17,
-         sizeLat2 = 9,
-         sizeMan2 = 2,
-         sizeMan = 4,
-         edge.color = "black")
-
-```
-
-## Final thoughts
-
-To conclude, here are some general notes and tips for drawing SEM plots with the **semPlot** package:
-
--   Play around with different layout options! Besides of `"tree"` option, there are `"circle"` and `"spring"` options, and the best choice for your visualization depends e.g. on the number of factors/latent variables and manifest/observed variables. For example, I have found `"spring"` layout useful in some situations, especially if you have many factors and observed variables in your model.
-
--   Be patient: you probably have to play around with `semPaths()` to find the best solution for your model plotting, especially with the `sizeMan`, `sizeMan2`, `sizeLat`, `sizeLat2`, `label.cex`, `legend.cex` and `nodeNames` arguments.
-
--   Check out Sacha Epskamp's [-@epskamp2019] tutorial video to get started -- he is the author of the **semPlot** package, and his introductional video offers a good starting point for SEM plotting.
-
-Hopefully you found my instructions useful. Happy coding and SEM plotting!
-
-### References
