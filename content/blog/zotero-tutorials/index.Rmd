@@ -40,20 +40,20 @@ csl: american-political-science-association.csl
 
 # Purpose
 
-This short blog post is just to inform that I've done some instruction videos on how to use Zotero for more efficient reference management in Microsoft Word. Videos and related presentation slides and GitHub materials can be accessed by clicking the buttons under the title of this post.
+This short blog post is just to inform you that I've done some instruction videos on how to use Zotero for more efficient reference management in Microsoft Word. Videos and related presentation slides and GitHub materials can be accessed by clicking the buttons under the title of this post.
 
 Videos were done for University of Helsinki's [Master's Programme in Russian Studies](https://www.helsinki.fi/en/degree-programmes/russian-studies-masters-programme) students, and thus the contents were designed with these students in mind.
 
 
-## Why I teach using Zotero in MS Word instead of using it in RStudio?
+## Why do I teach using Zotero in MS Word instead of using it in RStudio?
 
 Since I'm an R user myself, some of you might ask: why do you want to demonstrate the use of Zotero in ***MS Word environment*** (commercial software) instead of ***RStudio environment*** (free software)?
 
-The reason for this is that although I love R and RStudio (like other good free and open-source softwares), based on my experience most social scientists and humanists are (still, hopefully this will change in the future!) using MS Word to write their texts. I'm aware that MS Word is quite clumsy software and might unjustly enjoy near-monopolist position in the text processing field, as Charlie Stross [-@stross_why_nodate] has stated. However, since most people in my target-group (here: students of Russia Studies) aren't R users and I had only limited time to teach them, I thought it will be more useful to them to show how to use Zotero with Word first. Besides, if you can use Zotero fluently with Word, you should be able to apply the same principles in using it with RStudio -- so videos should be useful for current and future R users too!
+The reason for this is that although I love R and RStudio (like other good free and open-source softwares), based on my experience most social scientists and humanists are (still, hopefully this will change in the future!) using MS Word to write their texts. I'm aware that MS Word is quite clumsy software and might unjustly enjoy a near-monopolist position in the text processing field, as Charlie Stross [-@stross_why_nodate] has stated. However, since most people in my target group (here: students of Russia Studies) aren't R users and I had only limited time to teach them, I thought it will be more useful to them to show how to use Zotero with Word first. Besides, if you can use Zotero fluently with Word, you should be able to apply the same principles in using it with RStudio -- so videos should be useful for current and future R users too!
 
 ## Future plans
 
-Next, I'm planning to do some instruction videos on how to use Zotero with RStudio/RMarkdown. Actually, I already found some interesting videos on the topic by Ulrik Lyngs [@lyngs_ulrik_nodate], so I should check them out before going on with this plan.
+Next, I'm planning to do some instruction videos on how to use Zotero with RStudio/RMarkdown. I already found some interesting videos on the topic by Ulrik Lyngs [@lyngs_ulrik_nodate], so I should check them out before going on with this plan.
 
 
 ### Technical details
@@ -61,7 +61,7 @@ Next, I'm planning to do some instruction videos on how to use Zotero with RStud
 For those who are interested, here's how videos and other materials were produced:
 
 * Videos were recorded with MacBook Pro's default QuickTime Player.
-* Videos were edited in YouTube Studio (mainly added the subtitles and cut some extra seconds from beginning and end of the videos).
+* Videos were edited in YouTube Studio (mainly added the subtitles and cut some extra seconds from the beginning and end of the videos).
 * Presentation materials were done using the **xaringan package** by Yihui Xie [-@R-xaringan].
 
 ### References
