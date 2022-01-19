@@ -24,6 +24,8 @@ tags:
  - reference management
  - Zotero
  - MS Word
+ - xaringan
+ - scientific writing
 title: Zotero Tutorials & (xaringan) Slides
 bibliography: "zotero-tutorials-references.bib"
 csl: american-political-science-association.csl
