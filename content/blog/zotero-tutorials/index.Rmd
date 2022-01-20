@@ -5,7 +5,7 @@ links:
   - icon: link
     icon_pack: fa
     name: Slides
-    url: https://zoterotutorials.netlify.app/zotero_tutorials_slides.html?fbclid=IwAR2FzkhPhB5_I6RdkuCyw21YcI9jrJkRGnbC-NAZWIvpAvDg6U1i_vWa0KE#1
+    url: https://zoterotutorials.netlify.app/#1
   - icon: youtube
     icon_pack: fab
     name: Videos
