@@ -2,7 +2,7 @@
 date: "2022-01-25T00:00:00Z"
 external_link: ""
 image:
-  caption: Image is screenshot from Gapminder's webpage
+  caption: Image a is screenshot from Gapminder's webpage
   focal_point: Smart
 links:
 summary: How to make Hans Rosling-style bubble charts with the plotly package.
@@ -180,7 +180,12 @@ soviet_fig <- p_soviet %>%
     size = ~pop,
     color = ~country_group,
     frame = ~year,
-    text = ~country,
+    # Adding hover over options to scatter dots
+    text = ~paste("</br> Country: ", country,
+                  "</br> Life Expectancy: ", round(life_exp, digits = 0),
+                  "</br> GDP per capita: ", round(gdp_per_capita, digits = 0),
+                  "</br> Population: ", pop),
+    # Adding colors to country groups
     colors = c("#ff031c",
                "#ffa303",
               "#0307ff",
@@ -194,19 +199,22 @@ soviet_fig <- p_soviet %>%
 
 # Add labels
 soviet_fig <- soviet_fig %>%
-  layout(title = "Life expectancy, GDP per capita and population\nin post-Soviet countries (1995-2019)",
+  layout(title = list(text = "Life expectancy, GDP per capita and population in post-Soviet countries\n(in 1995-2019)",
+                      x = 0.1), # this changes the title position to left
          xaxis = list(title = "GDP per capita (in constant international-$)"),
-         yaxis = list(title = "Life expectancy (in year)"),
+         yaxis = list(title = "Life expectancy (in years)"),
          legend=list(title=list(text='<b> Country Group </b>')))
 
 # Print the final plot
 soviet_fig
+
+
 ```
 
 <br>
 
 Now our interactive plot is ready. As we can see by examining this chart, most of the post-Soviet countries were quite tightly clustered together still in 1995, and both the life expectancy and GDP per capita were low in most countries. However, as we press the "Play"-button and move closer to the present, we can see that the Baltic states -- Estonia, Latvia and Lithuania -- are significantly richer in terms of GPD per capita in 2019 than rest of the post-Soviet countries, and also their life expectancy is higher than in rest of the countries examined here. Moreover, Turkmenistan has significantly lower life expectancy compared to other post-Soviet countries in 2019, and it's the only country which doesn't belong to any cross-national union. We can also see that Russia, Kazakhstan, Uzbekistan and Ukraine are the most population rich countries (i.e. the biggest bubbles) of former Soviet Union countries. Naturally, one can do further interpretations about the chart too. 
 
-Now we are done, and the next step is to apply your own data. Thanks for reading, hopefully you found these instructions useful and interesting! yeyes gdsgdsggdsgds
+Now we are done, and the next step is to apply your own data. Thanks for reading, hopefully you found these instructions useful and interesting!
 
 ### References
