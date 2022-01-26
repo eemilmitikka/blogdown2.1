@@ -192,7 +192,7 @@ However, since I'm specializing in Russian and former Soviet Union countries, I 
 
 ## Data
 
-As always with data analysis, the first step is to find an appropriate dataset for your purposes. First, I played around with Gapminder foundations data on life expectancy, GDP per capita, and population statistics [available at: @gapminderfoundation2022], but decided to use eventually the data of Our World in Data [-@ourwordindata2022] (this, by the way, is perhaps my favorite data source).
+As always with data analysis, the first step is to find an appropriate dataset for your purposes. First, I played around with Gapminder foundation's data on life expectancy, GDP per capita, and population statistics [available at: @gapminderfoundation2022], but decided to use eventually the data of Our World in Data [-@ourwordindata2022] (this, by the way, is perhaps my favorite data source).
 
 ```{r warning=FALSE, message=FALSE}
 # Import libraries
@@ -282,11 +282,11 @@ tail(p_soviet)
 
 It seems like the data wrangling went as supposed to. Let's now proceed to actual interactive plotting.
 
-## Interactive bubble chart: post-Soviet edition
+## Interactive Bubble Chart: the post-Soviet Edition
 
 After the data importing and wrangling is done and our data is ready, all we need to do is to use our data within the `plot_ly()` function from the **plotly** package.
 
-Note that I filtered the year variable (here: X-axis) to start from 1995, because the GDP per capita data for Estonia, Latvia, and Lithuania was missing from 1990--1994 in this dataset.
+Note that I filtered the year variable to start from 1995, because the GDP per capita data for Estonia, Latvia, and Lithuania was missing from 1990--1994 in this dataset.
 
 ```{r warning=FALSE, message=FALSE}
 # Import the plotly package 
@@ -334,7 +334,7 @@ soviet_fig
 
 <br>
 
-Now our interactive plot is ready: life expectancy is displayed on the Y-axis, GDP per capita on the X-axis, bubbles capture the population size, and colors depict the country groups. Here, "CIS" refers to the "[Commonwealth of Independent States](https://en.wikipedia.org/wiki/Commonwealth_of_Independent_States)", "EU-partner" refers to "[European Union's Eastern Partnership](https://en.wikipedia.org/wiki/Eastern_Partnership)" countries, and "EU" refers to the "[European Union](https://en.wikipedia.org/wiki/European_Union)". "CIS-country & EU-partner", in turn, depicts countries that are both Eastern Partnership countries and members of the Commonwealth of Independent States (NB: Belarus is suspended from the former, and hence displayed only as a "CIS-country").
+Now our interactive plot is ready: life expectancy is displayed on the Y-axis, GDP per capita on the X-axis, bubbles capture the population size, and colors depict the country groups. Here, "CIS" refers to "[Commonwealth of Independent States](https://en.wikipedia.org/wiki/Commonwealth_of_Independent_States)" countries, "EU-partner" refers to "[European Union's Eastern Partnership](https://en.wikipedia.org/wiki/Eastern_Partnership)" countries, and "EU" refers to "[European Union](https://en.wikipedia.org/wiki/European_Union)" countries. "CIS-country & EU-partner", in turn, depicts countries that are both Eastern Partnership countries and members of the Commonwealth of Independent States (NB: Belarus is suspended from the former, and hence displayed only as a "CIS-country").
 
 As we can see by examining this chart, there seems to a positive linear relationship between life expectancy and wealth within the group of post-Soviet countries too. We may also observe that most of the post-Soviet countries were quite tightly clustered together still in 1995, and both the life expectancy and GDP per capita were low in most countries. However, as we press the "Play"-button and move closer to the present, we can see that the Baltic states -- Estonia, Latvia, and Lithuania -- are significantly richer in terms of GPD per capita in 2019 than the rest of the post-Soviet countries, and also their life expectancy is higher than in rest of the countries examined here. Moreover, Turkmenistan has significantly lower life expectancy compared to other post-Soviet countries in 2019, and it's the only country that doesn't belong to any cross-national union. We can also see that Russia, Kazakhstan, Uzbekistan, and Ukraine are the most population-rich countries (i.e. the biggest bubbles) of former Soviet Union countries. It's also notable how GDP per capita stagnates or rolls back in 2008--2009, shortly after the global financial crisis hit the world. Naturally, one can do further interpretations about the chart too. 
 
