@@ -138,14 +138,15 @@ soviet_fig <- soviet_fig %>%
 
 soviet_fig
 ```
+<br>
 
 # Hans Rosling-style Bubble Plots
 
 Hans Rosling was a physician, academic, public speaker and enthusiastic promoter of a fact-based worldview. I heard the first time about him when I was taking intro courses on statistics, and I remember thinking already back then that his visualizations were impressive. I also managed (finally) to read his [*Factfulness*](https://www.gapminder.org/factfulness-book/) book [@rosling2020] recently, and I thought it would be nice to try out the kind of visualizations he uses on his [presentations](https://www.youtube.com/watch?v=hVimVzgtD6w).
 
-Luckily, it turned out that imitating Rosling's visualizations isn't so hard these days if you know a little bit of R. I started my investigation by simply Googling "hans rosling style plots in r". The first instructions I found were done by Tristan Ganry [-@ganry2018], and I learned from his instructions that you can generate Rosling-style plots easily using **gganimate** (for creating GIF files) or **plotly** (for HTML files) package. Since I was mainly interested in creating HTML-type interactive plots, this post deals only with the **plotly** package.
+Luckily, it turned out that imitating Rosling's visualizations isn't so hard these days if you know a little bit of R. I started my investigation by simply Googling "hans rosling style plots in r". The first instructions I found were done by Tristan Ganry [-@ganry2018], and I learned from his instructions that you can generate Rosling-style plots easily using **gganimate** (for creating GIF files) or **plotly** (for HTML files) package. Since I was mainly interested in creating HTML-type interactive plots, this post deals only with the **plotly** package method.
 
-## Interactive (bubble) charts using plotly package
+## Interactive (Bubble) Charts Using the plotly Package
 
 So, how to imitate the kind of bubble chart as shown under the title of this blog post? After some Googling, I found the needed instructions from plotly package's webpage under the topic "Intro to Animations in R" [@plotlygraphs2017]. Actually, the example data used in these instructions was exactly from [Gapminder](https://www.gapminder.org/about/), and there's a R package for this dataset which can be downloaded to your R environment simply by typing `library(gapminder)` in your RMarkdown code chunk or your R console:
 
@@ -182,6 +183,10 @@ fig <- fig %>% layout(
 fig
 
 ```
+
+<br>
+
+In the chart above, life expectancy is displayed on Y-axis (the vertical axis), gross domestic product (GDP) per capita is displayed on X-axis (the horizontal axis), bubbles capture the population size in each country (the bigger the bubble, the more populated country), and color describes which continent countries represent. By pressing the "Play"-button, we can see how these variables have changed over time between the years 1952 and 2007. As we can see from the chart, life expectancy and wealth are related to each other: as either one grows,  another grows too, and vice versa. We can also see that in 1952 Asian and African countries were clustered in the bottom-left corner of the graph (poor and short life expectancy), whereas European and Oceanian countries are closer to the top-right corner (rich and long life expectancy). Most of the countries in the "Americas" group, in turn, are somewhere in between the poor and short life expectancy, and rich and long life expectancy. However, as we press the "Play"-button and look at how these variables change in time, we can see that more and more countries are clustering in the top-right corner (rich and long life expectancy) of the chart. This is exactly one of Rosling's main points: it's dated to speak about "the West and the rest" because today many non-Western countries have caught up the "West" in life expectancy and wealth.
 
 However, since I'm specializing in Russian and former Soviet Union countries, I decided to do my Rosling-style bubble chart visualization only with post-Soviet countries. Also, since all post-Soviet countries are located either in Europe or in Asia, I wanted to create custom country groups for my own visualization (Rosling usually divides countries by continents, as seen in the visualization above).
 
@@ -329,8 +334,8 @@ soviet_fig
 
 <br>
 
-Now our interactive plot is ready. As we can see by examining this chart, most of the post-Soviet countries were quite tightly clustered together still in 1995, and both the life expectancy and GDP per capita were low in most countries. However, as we press the "Play"-button and move closer to the present, we can see that the Baltic states -- Estonia, Latvia, and Lithuania -- are significantly richer in terms of GPD per capita in 2019 than the rest of the post-Soviet countries, and also their life expectancy is higher than in rest of the countries examined here. Moreover, Turkmenistan has significantly lower life expectancy compared to other post-Soviet countries in 2019, and it's the only country that doesn't belong to any cross-national union. We can also see that Russia, Kazakhstan, Uzbekistan, and Ukraine are the most population-rich countries (i.e. the biggest bubbles) of former Soviet Union countries. It's also notable how GDP per capita stagnates or rolls back in 2008--2009, shortly after the global financial crisis hit the world. Naturally, one can do further interpretations about the chart too. 
+Now our interactive plot is ready. As we can see by examining this chart, there seems to a positive linear relationship between life expectancy and wealth within the group of post-Soviet countries too. We may also observe that most of the post-Soviet countries were quite tightly clustered together still in 1995, and both the life expectancy and GDP per capita were low in most countries. However, as we press the "Play"-button and move closer to the present, we can see that the Baltic states -- Estonia, Latvia, and Lithuania -- are significantly richer in terms of GPD per capita in 2019 than the rest of the post-Soviet countries, and also their life expectancy is higher than in rest of the countries examined here. Moreover, Turkmenistan has significantly lower life expectancy compared to other post-Soviet countries in 2019, and it's the only country that doesn't belong to any cross-national union. We can also see that Russia, Kazakhstan, Uzbekistan, and Ukraine are the most population-rich countries (i.e. the biggest bubbles) of former Soviet Union countries. It's also notable how GDP per capita stagnates or rolls back in 2008--2009, shortly after the global financial crisis hit the world. Naturally, one can do further interpretations about the chart too. 
 
-Now we are done, and the next step is to apply your data. Thanks for reading, hopefully you found these instructions useful and interesting!
+Now we are done. The next step is to do your own analysis and apply your own data. Thanks for reading, hopefully you found these instructions useful and interesting!
 
 ### References
