@@ -2,7 +2,7 @@
 date: "2022-01-25T00:00:00Z"
 external_link: ""
 image:
-  caption: Image a is screenshot from Gapminder's webpage
+  caption: Image is a screenshot from Gapminder's webpage
   focal_point: Smart
 links:
 summary: How to make Hans Rosling-style bubble charts with the plotly package.
@@ -18,14 +18,130 @@ bibliography: "bubble-charts-references.bib"
 csl: american-political-science-association.csl
 ---
 
-```{r include=FALSE, warning=FALSE}
-# citation("xaringan")
-# knitr::write_bib("xaringan", file = "zotero-tutorials-references.bib")
-```
-
 # Purpose
 
-In this blog post, I'll show how to make [Hans Rosling](https://en.wikipedia.org/wiki/Hans_Rosling) -style interactive bubble charts with R. Rosling was a physician, academic, public speaker and enthusiastic promoter of a fact-based worldview. I heard the first time about him when I was taking intro courses on statistics, and I remember thinking already back then that his visualizations were impressive. I also managed (finally) to read his [*Factfulness*](https://www.gapminder.org/factfulness-book/) book [@rosling2020] recently, and I thought it would be nice to try out the kind of visualizations he uses on his [presentations](https://www.youtube.com/watch?v=hVimVzgtD6w).
+In this blog post, I'll show how to make [Hans Rosling](https://en.wikipedia.org/wiki/Hans_Rosling) -style interactive bubble charts with R. The resulting interactive plot we'll build looks like this:
+
+```{r final-chart, warning=FALSE, echo=FALSE, message=FALSE}
+# Import libraries
+library(tidyverse)
+library(here)
+
+# Import GDP data
+gdp <- paste(here("content/blog/psoviet-bubble-charts/data/gdp-per-capita-worldbank.csv")) %>% 
+  read.csv()
+
+# Import life expectancy data
+life_expectancy <- paste(here("content/blog/psoviet-bubble-charts/data/life-expectancy.csv")) %>% 
+  read.csv()
+
+# Import population data
+population <- paste(here("content/blog/psoviet-bubble-charts/data/population-since-1800.csv")) %>% 
+  read.csv()
+
+# Put all data frames into list
+df_list <- list(gdp, life_expectancy, population)
+
+# Merge all data frames in list
+full_data <- Reduce(function(x, y) merge(x, y, all=TRUE), df_list)
+
+# Filter for post-Soviet countries
+p_soviet <- full_data %>% 
+  filter(Entity %in% c("Russia",  
+                        "Belarus",
+                        "Ukraine",
+                        "Estonia",
+                        "Latvia",
+                        "Lithuania",
+                        "Armenia",
+                        "Azerbaijan",
+                        "Georgia",
+                        "Turkmenistan",
+                        "Uzbekistan",
+                        "Kazakhstan",
+                        "Kyrgyzstan",
+                        "Tajikistan",
+                        "Moldova"),
+         # Let's select only years 1990-2019
+         Year >= 1990 & Year <= 2019) %>% 
+  # Rename some lengthy variable names for the new dataset
+  rename(gdp_per_capita = GDP.per.capita..PPP..constant.2017.international...,
+         life_exp = Life.expectancy,
+         pop = Population..historical.estimates.,
+         country = Entity,
+         cntr_code = Code,
+         year = Year)
+
+# Add country groups to post-Soviet states data
+p_soviet <- p_soviet %>% 
+  mutate(
+    country_group = case_when(
+      # CIS-membership
+      country %in% c("Belarus",
+                     "Kazakhstan",
+                     "Kyrgyzstan",
+                     "Russia",
+                     "Tajikistan",
+                     "Uzbekistan") ~ "CIS-country",
+      # EU-membership
+      country %in% c("Estonia",
+                     "Latvia",
+                     "Lithuania") ~ "EU-member",
+      # EU-partnership
+      country %in% c("Georgia",
+                     "Ukraine") ~ "EU-partner",
+      # EU-partnership and CIS-member
+      country %in% c("Armenia",
+                     "Azerbaijan",
+                     "Moldova") ~ "CIS-country & EU-partner",
+      # Other categories
+      country == "Turkmenistan" ~ "Other"
+    )
+  )
+
+# Import the plotly package 
+library(plotly)
+
+# Create the plotly plot 
+soviet_fig <- p_soviet %>% 
+  filter(year >= 1995) %>% 
+  plot_ly(
+    x = ~gdp_per_capita,
+    y = ~life_exp,
+    size = ~pop,
+    color = ~country_group,
+    frame = ~year,
+    # Adding hover over options to scatter dots
+    text = ~paste("</br> Country: ", country,
+                  "</br> Life Expectancy: ", round(life_exp, digits = 0),
+                  "</br> GDP per capita: ", round(gdp_per_capita, digits = 0),
+                  "</br> Population: ", pop),
+    # Adding colors to country groups
+    colors = c("#ff031c",
+               "#ffa303",
+              "#0307ff",
+              "#1bab3a",
+              "#03dbfc"),
+    alpha = 0.5,
+    sizes = c(10,1000), # play around with these values
+    hoverinfo = "text",
+    type = "scatter",
+    mode = "markers")
+
+# Add labels
+soviet_fig <- soviet_fig %>%
+  layout(title = list(text = "Life expectancy, GDP per capita and population in post-Soviet\ncountries(in 1995-2019)",
+                      x = 0.1), # this changes the title position to left
+         xaxis = list(title = "GDP per capita (in constant international-$)"),
+         yaxis = list(title = "Life expectancy (in years)"),
+         legend=list(title=list(text='<b> Country Group </b>')))
+
+soviet_fig
+```
+
+# Hans Rosling-style Bubble Plots
+
+Hans Rosling was a physician, academic, public speaker and enthusiastic promoter of a fact-based worldview. I heard the first time about him when I was taking intro courses on statistics, and I remember thinking already back then that his visualizations were impressive. I also managed (finally) to read his [*Factfulness*](https://www.gapminder.org/factfulness-book/) book [@rosling2020] recently, and I thought it would be nice to try out the kind of visualizations he uses on his [presentations](https://www.youtube.com/watch?v=hVimVzgtD6w).
 
 Luckily, it turned out that imitating Rosling's visualizations isn't so hard these days if you know a little bit of R. I started my investigation by simply Googling "hans rosling style plots in r". The first instructions I found were done by Tristan Ganry [-@ganry2018], and I learned from his instructions that you can generate Rosling-style plots easily using **gganimate** (for creating GIF files) or **plotly** (for HTML files) package. Since I was mainly interested in creating HTML-type interactive plots, this post deals only with the **plotly** package.
 
@@ -67,11 +183,11 @@ fig
 
 ```
 
-However, since I'm specializing in Russian and former Soviet Union countries, I decided to do my own Rosling-style bubble chart visualization only with post-Soviet countries. Also, since all post-Soviet countries are located either in Europe or in Asia, I wanted to create custom country groups for my own visualization (Rosling usually divides countries by continents, as seen in the visualization above).
+However, since I'm specializing in Russian and former Soviet Union countries, I decided to do my Rosling-style bubble chart visualization only with post-Soviet countries. Also, since all post-Soviet countries are located either in Europe or in Asia, I wanted to create custom country groups for my own visualization (Rosling usually divides countries by continents, as seen in the visualization above).
 
 ## Data
 
-As always with data analysis, the first step is to find appropriate dataset for your purposes. First, I played around with Gapminder foundations data on life expectancy, GDP per capita and population statistics [available at: @gapminderfoundation2022], but decided to use eventually the data of Our World in Data [-@ourwordindata2022] (this, by the way, is perhaps my favorite data source).
+As always with data analysis, the first step is to find an appropriate dataset for your purposes. First, I played around with Gapminder foundations data on life expectancy, GDP per capita, and population statistics [available at: @gapminderfoundation2022], but decided to use eventually the data of Our World in Data [-@ourwordindata2022] (this, by the way, is perhaps my favorite data source).
 
 ```{r warning=FALSE, message=FALSE}
 # Import libraries
@@ -163,9 +279,9 @@ It seems like the data wrangling went as supposed to. Let's now proceed to actua
 
 ## Interactive bubble chart: post-Soviet edition
 
-After the data importing and wrangling is done and our data is ready, all we need to do is to use our data withing the `plot_ly()` function from the **plotly** package.
+After the data importing and wrangling is done and our data is ready, all we need to do is to use our data within the `plot_ly()` function from the **plotly** package.
 
-Note that I filtered the year variable (here: X axis) to start from 1995, because the GDP per capita data for Estonia, Latvia and Lithuania was missing from 1990--1994 in this dataset.
+Note that I filtered the year variable (here: X-axis) to start from 1995, because the GDP per capita data for Estonia, Latvia, and Lithuania was missing from 1990--1994 in this dataset.
 
 ```{r warning=FALSE, message=FALSE}
 # Import the plotly package 
@@ -199,7 +315,7 @@ soviet_fig <- p_soviet %>%
 
 # Add labels
 soviet_fig <- soviet_fig %>%
-  layout(title = list(text = "Life expectancy, GDP per capita and population in post-Soviet countries\n(in 1995-2019)",
+  layout(title = list(text = "Life expectancy, GDP per capita and population in post-Soviet\ncountries (in 1995-2019)",
                       x = 0.1), # this changes the title position to left
          xaxis = list(title = "GDP per capita (in constant international-$)"),
          yaxis = list(title = "Life expectancy (in years)"),
@@ -213,8 +329,8 @@ soviet_fig
 
 <br>
 
-Now our interactive plot is ready. As we can see by examining this chart, most of the post-Soviet countries were quite tightly clustered together still in 1995, and both the life expectancy and GDP per capita were low in most countries. However, as we press the "Play"-button and move closer to the present, we can see that the Baltic states -- Estonia, Latvia and Lithuania -- are significantly richer in terms of GPD per capita in 2019 than rest of the post-Soviet countries, and also their life expectancy is higher than in rest of the countries examined here. Moreover, Turkmenistan has significantly lower life expectancy compared to other post-Soviet countries in 2019, and it's the only country which doesn't belong to any cross-national union. We can also see that Russia, Kazakhstan, Uzbekistan and Ukraine are the most population rich countries (i.e. the biggest bubbles) of former Soviet Union countries. Naturally, one can do further interpretations about the chart too. 
+Now our interactive plot is ready. As we can see by examining this chart, most of the post-Soviet countries were quite tightly clustered together still in 1995, and both the life expectancy and GDP per capita were low in most countries. However, as we press the "Play"-button and move closer to the present, we can see that the Baltic states -- Estonia, Latvia, and Lithuania -- are significantly richer in terms of GPD per capita in 2019 than the rest of the post-Soviet countries, and also their life expectancy is higher than in rest of the countries examined here. Moreover, Turkmenistan has significantly lower life expectancy compared to other post-Soviet countries in 2019, and it's the only country that doesn't belong to any cross-national union. We can also see that Russia, Kazakhstan, Uzbekistan, and Ukraine are the most population-rich countries (i.e. the biggest bubbles) of former Soviet Union countries. It's also notable how GDP per capita stagnates or rolls back in 2008--2009, shortly after the global financial crisis hit the world. Naturally, one can do further interpretations about the chart too. 
 
-Now we are done, and the next step is to apply your own data. Thanks for reading, hopefully you found these instructions useful and interesting!
+Now we are done, and the next step is to apply your data. Thanks for reading, hopefully you found these instructions useful and interesting!
 
 ### References
