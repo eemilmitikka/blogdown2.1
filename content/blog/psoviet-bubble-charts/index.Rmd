@@ -13,7 +13,7 @@ tags:
  - life expectancy
  - economic growth
  - population stats
-title: Hans Rosling-style Bubble Plots in R - the post-Soviet Edition
+title: Hans Rosling-style Animated Bubble Plots in R - the post-Soviet Edition
 bibliography: "bubble-charts-references.bib"
 csl: american-political-science-association.csl
 ---
