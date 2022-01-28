@@ -13,7 +13,7 @@ tags:
  - life expectancy
  - economic growth
  - population stats
-title: Hans Rosling-style Bubble Plots - the post-Soviet Edition
+title: Hans Rosling-style Bubble Plots in R - the post-Soviet Edition
 bibliography: "bubble-charts-references.bib"
 csl: american-political-science-association.csl
 ---
@@ -296,26 +296,26 @@ library(plotly)
 soviet_fig <- p_soviet %>% 
   filter(year >= 1995) %>% 
   plot_ly(
-    x = ~gdp_per_capita,
-    y = ~life_exp,
-    size = ~pop,
-    color = ~country_group,
-    frame = ~year,
+    x = ~gdp_per_capita, # defines the X-axis/horizontal axis
+    y = ~life_exp, # defines the Y-axis/vertical axis
+    size = ~pop, # this defines the "bubbles"
+    color = ~country_group, # defines categories
+    frame = ~year, # defines 
     # Adding hover over options to scatter dots
     text = ~paste("</br> Country: ", country,
                   "</br> Life Expectancy: ", round(life_exp, digits = 0),
                   "</br> GDP per capita: ", round(gdp_per_capita, digits = 0),
                   "</br> Population: ", pop),
-    # Adding colors to country groups
-    colors = c("#ff031c",
-               "#ffa303",
-              "#0307ff",
-              "#1bab3a",
-              "#03dbfc"),
-    alpha = 0.5,
-    sizes = c(10,1000), # play around with these values
-    hoverinfo = "text",
-    type = "scatter",
+    # Adding hex colors to country groups
+    colors = c("#ff031c", # CIS-countries
+               "#ffa303", # CIS-country & EU-partner
+              "#0307ff", # EU-member
+              "#1bab3a", # EU-partner
+              "#03dbfc"), # Other
+    alpha = 0.5, # defines the opacity/transparency of bubbles
+    sizes = c(10,1000), # defines bubble size: play around with these values
+    hoverinfo = "text", # defines what is displayed when hovering over the bubbles
+    type = "scatter", # defines chart type
     mode = "markers")
 
 # Add labels
