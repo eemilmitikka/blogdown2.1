@@ -5,7 +5,7 @@ image:
   caption: Image is a screenshot from Gapminder's webpage
   focal_point: Smart
 links:
-summary: How to make Hans Rosling-style bubble charts with the plotly package.
+summary: How to make Hans Rosling-style animated bubble charts in R with the plotly package.
 tags:
  - Hans Rosling
  - plotly
@@ -13,7 +13,8 @@ tags:
  - life expectancy
  - economic growth
  - population stats
-title: Hans Rosling-style Animated Bubble Plots in R - the post-Soviet Edition
+title: Hans Rosling-style Animated Bubble Plots in R
+subtitle: The post-Soviet Edition
 bibliography: "bubble-charts-references.bib"
 csl: american-political-science-association.csl
 ---
