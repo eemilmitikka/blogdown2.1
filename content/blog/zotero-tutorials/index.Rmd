@@ -33,7 +33,7 @@ I’ll speak first shortly about the application form and give some general tips
 
 # Application form
 
-The first thing that might confuse applying for these positions is the application form. You can find the form and general instructions on how to apply for the position on the doctoral programme’s website. After opening the general instructions site, navigate to the section “*Application form*” and click on “Research plan”. After that, a site with the following views opens:
+The first thing that might confuse applying for these positions is the application form. You can find the form and general instructions on how to apply for the position [on the doctoral programme’s website](https://www.helsinki.fi/en/admissions-and-education/apply-doctoral-programmes/doctoral-schools-and-doctoral-programmes/doctoral-school-humanities-and-social-sciences/doctoral-programme-political-societal-and-regional-changes/employment-doctoral-researcher). After opening the general instructions site, navigate to the section “*Application form*” and click on “[Research plan](https://www.helsinki.fi/assets/drupal/2022-09/Research_plan.pdf)”. After that, a site with the following views opens:
 
 
 ![](images/research_plan.jpg)
@@ -78,6 +78,7 @@ To me, it seemed a bit strange that this section was as long as some more substa
 ### Rationale for the research project (max. 2000 characters)
 
 In this section, my strategy was to state as clearly as possible ***why my topic is relevant not only to Russian and Eurasian studies***, but also ***universally speaking***. Here, I think the following passage contained the most relevant point of the rationale for the research project section:
+
 “*Studying political participation and regime dynamics in Russia is relevant because Russia represents a modern autocracy where the overall economic and human development (e.g. high education levels, socio- economic development) are at odds with the political development (low levels of political participation and growing autocratization). Moreover, existing research indicates that the life values of the Russian population have become increasingly individualistic over time (Magun and Rudnev, 2010). This non-connection between economic, human and value development and political development in Russia is puzzling, and contradicts many democratization and modernization theories (Bunce, 2000; Fish and Wittenberg, 2009; Inglehart, 1997). Hence, the relationship between political participation and autocracy requires a more detailed investigation and is the main rationale for my research project.*”
 
 ### Objectives of the research and scientific impact research results (max. 2000 characters with spaces)
