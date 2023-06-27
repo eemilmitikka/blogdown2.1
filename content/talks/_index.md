@@ -2,7 +2,7 @@
 header:
   caption: ""
   image: ""
-title: Recent Talks and Presentations
+title: Media
 
 type: widget_page
 ---
