@@ -5,7 +5,7 @@ author_notes:
 authors:
 - admin
 # date: "2015-09-01T00:00:00Z"
-doi: ""
+doi: "https://doi.org/10.33345/idantutkimus.121491"
 featured: false
 image:
   # caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/jdD8gXaTZsc)'
