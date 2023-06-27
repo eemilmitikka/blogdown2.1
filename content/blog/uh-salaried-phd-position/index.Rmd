@@ -5,7 +5,7 @@ links:
   - icon: file-pdf
     icon_pack: fa
     name: PDF
-    url: https://github.com/eemilmitikka/eemilmitikka-website/blob/main/content/blog/uh-salaried-phd/uh_application.pdf
+    url: https://github.com/eemilmitikka/eemilmitikka-website/blob/main/content/blog/uh-salaried-phd-position/uh_application.pdf
 
 summary: My experiences and thoughts on applying salaried PhD researcher position at the Unviversity of Helsinki.
 tags:
