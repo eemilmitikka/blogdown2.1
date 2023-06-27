@@ -5,7 +5,7 @@ name = "custom"
 light = true
 
 # Primary
-primary = "#023e8a"
+primary = "#2D5DB8"
 
 # Menu
 menu_primary = "#03045e"
