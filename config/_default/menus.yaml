@@ -19,7 +19,7 @@ main:
   - name: Publications
     url: '#publications'
     weight: 40
-  - name: Recent Talks and Presentations
+  - name: Media
     url: '#talks'
     weight: 50
   - name: Contact
